@@ -7,6 +7,7 @@ import 'package:wasty_reviews_app/widgets/review_card.dart';
 
 void main() {
   testWidgets('ReviewCard shows review name and reply button for admin', (WidgetTester tester) async {
+    // Create a dummy review to display
     final review = Review(
       id: '1',
       reviewer: 'Alexandros',
@@ -18,6 +19,7 @@ void main() {
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
+          // Override adminModeProvider to true so reply button should be visible
           adminModeProvider.overrideWith((ref) => true),
         ],
         child: MaterialApp(
@@ -28,9 +30,10 @@ void main() {
       ),
     );
 
-
+    // Check if the reviewer's name is displayed
     expect(find.text('Alexandros'), findsOneWidget);
-   
+
+    // Check if the reply icon button is shown for admin mode
     expect(find.byIcon(Icons.reply), findsOneWidget);
   });
 }
