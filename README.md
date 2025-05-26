@@ -1,28 +1,56 @@
-# Wasty Reviews App
+#  Wasty Reviews App
 
-A modern Flutter demo app for managing and analyzing reviews, featuring local storage 
-
----
-
-## Features
-
-- View and filter reviews
-- Reply to reviews (admin mode)
-- Mark reviews as important
-- Sentiment tagging (Positive, Neutral, Negative)
-- Analytics dashboard with charts
-- **Data persists locally** (using SharedPreferences)
-- Unit/widget tests for main UI components
+A  Flutter demo app for managing and analyzing reviews with **persistent local storage**, state management, analytics, and admin mode.
 
 ---
 
-## Setup Instructions
+##  Features
 
-### 1. **Clone the repository**
+-  **View and filter reviews** (by rating)
+-  **Reply to reviews** (admin mode only)
+-  **Mark reviews as important**
+-  **Sentiment tagging** (Positive, Neutral, Negative)
+-  **Analytics dashboard with charts**
+-  **Local persistence** using SharedPreferences
+-  **Unit/widget tests** for all main components
+
+---
+
+##  Screenshots
+
+<table>
+  <tr>
+    <td><img src="https://i.postimg.cc/YSYwzbG6/Screenshot-1748251501.png" alt="Reviews Screen" width="220"/></td>
+    <td><img src="https://i.postimg.cc/cC9qLz2S/Screenshot-1748251512.png" alt="Sorting reviews by rating 1/2" width="220"/></td>
+    <td><img src="https://i.postimg.cc/mDSf0kSh/Screenshot-1748251520.png" alt="Sorting reviews by rating 2/2" width="220"/></td>
+    <td><img src="https://i.postimg.cc/26YNchhP/Screenshot-1748251527.png" alt="Admin mode" width="220"/></td>
+    <td><img src="https://i.postimg.cc/8cPQDGy4/Screenshot-1748251548.png" alt="Reply as Admin 1/2" width="220"/></td>
+    <td><img src="https://i.postimg.cc/xTZDrWLG/Screenshot-1748251551.png" alt="Reply as Admin 2/2" width="220"/></td>
+    <td><img src="https://i.postimg.cc/wx0Y2tvG/Screenshot-1748251568.png" alt="Analytics screen" width="220"/></td>
+    <td><img src="https://i.postimg.cc/NfFqzg2f/Screenshot-1748251581.png" alt="Toggle important" width="220"/></td>
+  </tr>
+  <tr>
+    <td align="center">Reviews Screen</td>
+    <td align="center">Sorting reviews by rating 1/2</td>
+    <td align="center">Sorting reviews by rating 2/2</td>
+    <td align="center">Admin mode</td>
+    <td align="center">Reply as Admin 1/2</td>
+    <td align="center">Reply as Admin 2/2</td>
+    <td align="center">Analytics screen</td>
+    <td align="center">Toggle important</td>
+  </tr>
+</table>
+
+---
+
+##  Setup Instructions
+
+### 1. Clone the repository
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/berojed/WastyApp.git
 cd wasty_reviews_app
+
 ```
 
 ### 2. **Install dependencies**
@@ -36,35 +64,32 @@ flutter pub get
 ```bash
 flutter run
 ```
+---
 
+##  Description of Approach
 
-#### Description of Approach
+**State management**  
+The app leverages **Flutter Riverpod** for robust, modular, and scalable state management. All business logic, view models, and UI state are managed using Riverpod providers, ensuring predictable app behavior and easy testability.
 
-State management:
-The app uses Flutter Riverpod for robust and scalable state management (all view models and providers).
+**Data storage**  
+All replies, “important” flags, and sentiments are **persisted locally** using [SharedPreferences](https://pub.dev/packages/shared_preferences).  
+This means user actions are saved and restored automatically—even after the app is closed and restarted.
 
-Data storage:
-Replies, important flags, and sentiments are persisted locally using [SharedPreferences].
-This ensures user interactions remain even after the app is closed.
+**UI/UX**  
+-  **Bottom navigation:** Switching between “Reviews” and “Analytics” screens  
+-  **Admin toggle:** Enables/disables admin features (like replying to reviews) in real-time  
+-  **Clean, responsive design:** Adapts to all devices and screen sizes  
+-  **Analytics dashboard:** Review stats visualized with charts ([fl_chart](https://pub.dev/packages/fl_chart))
 
-UI/UX:
+**Testing**  
+Key widgets—**ReviewCard**, **ReviewListScreen**, **AnalyticsScreen**—are covered by dedicated widget tests, ensuring reliability and robustness.
 
-Bottom navigation for quick switching between "Reviews" and "Analytics".
+---
 
-Simple, responsive layout with support for admin actions via toggle.
+##  Tech Stack
 
-Analytics visualized using charts (e.g., [fl_chart]).
-
-Testing:
-Core widgets (ReviewCard, ReviewListScreen, AnalyticsScreen) have dedicated widget tests ensuring reliability and correct UI logic.
-
-#### Stack
-Flutter
-
-Riverpod
-
-SharedPreferences
-
-fl_chart
-
-[flutter_test]
+- **Flutter** – cross-platform UI toolkit
+- **Riverpod** – state management
+- **SharedPreferences** – local storage
+- **fl_chart** – analytics charts
+- **flutter_test** – widget/unit testing
